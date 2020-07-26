@@ -15,8 +15,8 @@ module.exports = {
             }
         }
     },
-    challengeBetweenTwo(movie1, movie2){
-        if(movie1.nota > movie2.nota){
+    challengeBetweenTwo(movie1, movie2){    
+        if(movie1['nota'] > movie2['nota']){
             return movie1;
         }
         return movie2;
