@@ -1,0 +1,30 @@
+{
+  "name": "server-movies",
+  "version": "1.0.0",
+  "description": "Server movies",
+  "main": "router.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Cyntia Santos",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-cache-controller": "^1.1.0",
+    "file-system": "^2.2.2",
+    "html-webpack-plugin": "^3.2.0",
+    "http-proxy": "^1.17.0",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.4",
+    "request": "^2.88.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
