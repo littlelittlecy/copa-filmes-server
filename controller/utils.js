@@ -15,10 +15,16 @@ module.exports = {
             }
         }
     },
-    challengeBetweenTwo(movie1, movie2){    
-        if(movie1['nota'] > movie2['nota']){
+    challengeBetweenTwo(movie1, movie2) {
+        if (movie1['nota'] > movie2['nota']) {
             return movie1;
+        } else if (movie1['nota'] < movie2['nota']) {
+            return movie2;
         }
-        return movie2;
+        var movies = new Array();
+        movies.push(movie1);
+        movies.push(movie2);
+        movies.sort(this.dynamicSort("titulo"));
+        return movies[0];
     }
 }

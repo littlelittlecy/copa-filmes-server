@@ -39,6 +39,7 @@ module.exports = {
         
         //FASE B
         //winner1 X winner2 -> winA
+
         
         //winner3 X winner4 -> winB
         
