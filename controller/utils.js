@@ -26,5 +26,22 @@ module.exports = {
         movies.push(movie2);
         movies.sort(this.dynamicSort("titulo"));
         return movies[0];
+    },
+    getChampion(movie1, movie2) {
+        var movies = new Array();
+
+        if (movie1['nota'] > movie2['nota']) {
+            movies.push(movie1);
+            movies.push(movie2);
+        } else if (movie1['nota'] < movie2['nota']) {
+            movies.push(movie2);
+            movies.push(movie1);
+        } else {
+            movies.push(movie1);
+            movies.push(movie2);
+            movies.sort(this.dynamicSort("titulo"));
+        }
+
+        return movies;
     }
 }
