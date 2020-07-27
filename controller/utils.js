@@ -31,10 +31,10 @@ module.exports = {
 
     eliminatorias(filmes) {
         const finalistas = new Array();
-        finalistas[0] = utils.batalhaEntreFilmes(filmes[0], filmes[7]);
-        finalistas[1] = utils.batalhaEntreFilmes(filmes[1], filmes[6]);
-        finalistas[2] = utils.batalhaEntreFilmes(filmes[2], filmes[5]);
-        finalistas[3] = utils.batalhaEntreFilmes(filmes[3], filmes[4])
+        finalistas[0] = this.batalhaEntreFilmes(filmes[0], filmes[7]);
+        finalistas[1] = this.batalhaEntreFilmes(filmes[1], filmes[6]);
+        finalistas[2] = this.batalhaEntreFilmes(filmes[2], filmes[5]);
+        finalistas[3] = this.batalhaEntreFilmes(filmes[3], filmes[4])
         return finalistas;
     },
 
