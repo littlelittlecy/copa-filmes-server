@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
 app.use(bodyParser.json({ limit: '100mb' }));
 
 app.use('/api/', require('./router'));
-
+/*
 const options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
@@ -24,5 +24,5 @@ const options = {
 
 var httpsServer = https.createServer(options, app);
 httpsServer.listen(process.env.PORT || 5000);
-
-// app.listen(process.env.PORT || 5000);
+*/
+app.listen(process.env.PORT || 5000);
