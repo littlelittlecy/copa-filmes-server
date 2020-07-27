@@ -2,15 +2,15 @@ const axios = require('axios');
 var utils = require('./utils.js');
 module.exports = {
     getFilms(req, res) {
-        var config = {
+        const config = {
             headers: {
                 'Content-Type': "application/json"
             }
         };
-        var url = 'https://copafilmes.azurewebsites.net/api/filmes';
+        const url = 'https://copafilmes.azurewebsites.net/api/filmes';
         axios.get(url, config)
             .then((response) => {
-                var dataOrder = response.data;
+                const dataOrder = response.data;
                 dataOrder.sort(utils.dynamicSort("titulo"))
                 res.send(dataOrder);
             })
@@ -20,12 +20,12 @@ module.exports = {
 
     },
     initChallenge(req, res) {
-        var items = req.body;
+        const items = req.body;
         items.sort(utils.dynamicSort("titulo"));
 
-        var finals = new Array();
+        const finals = new Array();
 
-        var winners = new Array();
+        const winners = new Array();
         //FASE A
         //movie1 X movie8 -> winner1
         finals.push(utils.challengeBetweenTwo(items[0], items[7]));
@@ -47,7 +47,7 @@ module.exports = {
 
         ////IMPORTANT
         ////winner is always present on position 0 of the winners Array
-        winners = utils.getChampion(winners[0],winners[1]);
+        winners = utils.getChampion(winners[0], winners[1]);
         res.send(JSON.stringify(winners));
     }
 };
