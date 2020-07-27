@@ -47,7 +47,7 @@ module.exports = {
 
         ////IMPORTANT
         ////winner is always present on position 0 of the winners Array
-        winners = utils.getChampion(winners[0], winners[1]);
+        winners.push(utils.getChampion(winners[0],winners[1]));
         res.send(JSON.stringify(winners));
     }
 };
