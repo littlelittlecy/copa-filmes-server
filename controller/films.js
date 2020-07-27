@@ -19,35 +19,26 @@ module.exports = {
             });
 
     },
-    initChallenge(req, res) {
+    iniciarBatalha(req, res) {
         const itens = req.body;
-        itens.sort(utils.dynamicSort("titulo"));
+        itens.sort(utils.dynamicSort("titulo")); //ordenação alfabética
 
+        //função que faz a primeira frase, ou seja, as eliminatórias
+        this.eliminatorias(itens, (finalistas) => {
+            const escolhidos = new Array();
+            escolhidos[0] = utils.batalhaEntreFilmes(finalistas[0], finalistas[1]);
+            escolhidos[1] = utils.batalhaEntreFilmes(finalistas[2], finalistas[3]);
+            //o vencedor é sempre o ítem da posição 0 do array
+            res.send(JSON.stringify(utils.getVencedor(escolhidos[0], escolhidos[1])));
+        });
+
+    },
+    eliminatorias(filmes) {
         const finalistas = new Array();
-
-        const escolhidos = new Array();
-        //FASE A
-        //filme1 X filme8 -> escolhido1
-        finalistas.push(utils.batalhaEntreFilmes(itens[0], itens[7]));
-
-        //filme2 X filme7 -> escolhido2
-        finalistas.push(utils.batalhaEntreFilmes(itens[1], itens[6]));
-
-        //filme3 X filme6 -> escolhido3
-        finalistas.push(utils.batalhaEntreFilmes(itens[2], itens[5]));
-
-        //filme4 X filme5 -> escolhido4
-        finalistas.push(utils.batalhaEntreFilmes(itens[3], itens[4]));
-
-        //FASE B
-        //escolhido1 X escolhido2 -> winA
-        escolhidos.push(utils.batalhaEntreFilmes(finalistas[0], finalistas[1]));
-        //escolhido3 X escolhido4 -> winB    
-        escolhidos.push(utils.batalhaEntreFilmes(finalistas[2], finalistas[3]));
-
-        ////IMPORTANTE
-        ////escolhido é sempre o presente no index 0 do array
-        escolhidos.push(utils.getVencedor(escolhidos[0],escolhidos[1]));
-        res.send(JSON.stringify(escolhidos));
+        finalistas[0] = utils.batalhaEntreFilmes(filmes[0], filmes[7]);
+        finalistas[1] = utils.batalhaEntreFilmes(filmes[1], filmes[6]);
+        finalistas[2] = utils.batalhaEntreFilmes(filmes[2], filmes[5]);
+        finalistas[3] = utils.batalhaEntreFilmes(filmes[3], filmes[4])
+        return finalistas;
     }
 };
