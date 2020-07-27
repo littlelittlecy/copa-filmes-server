@@ -14,7 +14,7 @@ module.exports = {
             return a[property].localeCompare(b[property]);
         }
     },
-    challengeBetweenTwo(movie1, movie2) {
+    batalhaEntreFilmes(movie1, movie2) {
         if (movie1['nota'] > movie2['nota']) {
             return movie1;
         }
@@ -28,7 +28,7 @@ module.exports = {
         movies.sort(this.dynamicSort("titulo"));
         return movies[0];
     },
-    getChampion(movie1, movie2) {
+    getVencedor(movie1, movie2) {
         const movies = new Array();
 
         if (movie1['nota'] > movie2['nota']) {

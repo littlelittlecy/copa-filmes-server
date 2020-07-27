@@ -20,34 +20,34 @@ module.exports = {
 
     },
     initChallenge(req, res) {
-        const items = req.body;
-        items.sort(utils.dynamicSort("titulo"));
+        const itens = req.body;
+        itens.sort(utils.dynamicSort("titulo"));
 
-        const finals = new Array();
+        const finalistas = new Array();
 
-        const winners = new Array();
+        const escolhidos = new Array();
         //FASE A
-        //movie1 X movie8 -> winner1
-        finals.push(utils.challengeBetweenTwo(items[0], items[7]));
+        //filme1 X filme8 -> escolhido1
+        finalistas.push(utils.batalhaEntreFilmes(itens[0], itens[7]));
 
-        //movie2 X movie7 -> winner2
-        finals.push(utils.challengeBetweenTwo(items[1], items[6]));
+        //filme2 X filme7 -> escolhido2
+        finalistas.push(utils.batalhaEntreFilmes(itens[1], itens[6]));
 
-        //movie3 X movie6 -> winner3
-        finals.push(utils.challengeBetweenTwo(items[2], items[5]));
+        //filme3 X filme6 -> escolhido3
+        finalistas.push(utils.batalhaEntreFilmes(itens[2], itens[5]));
 
-        //movie4 X movie5 -> winner4
-        finals.push(utils.challengeBetweenTwo(items[3], items[4]));
+        //filme4 X filme5 -> escolhido4
+        finalistas.push(utils.batalhaEntreFilmes(itens[3], itens[4]));
 
         //FASE B
-        //winner1 X winner2 -> winA
-        winners.push(utils.challengeBetweenTwo(finals[0], finals[1]));
-        //winner3 X winner4 -> winB    
-        winners.push(utils.challengeBetweenTwo(finals[2], finals[3]));
+        //escolhido1 X escolhido2 -> winA
+        escolhidos.push(utils.batalhaEntreFilmes(finalistas[0], finalistas[1]));
+        //escolhido3 X escolhido4 -> winB    
+        escolhidos.push(utils.batalhaEntreFilmes(finalistas[2], finalistas[3]));
 
-        ////IMPORTANT
-        ////winner is always present on position 0 of the winners Array
-        winners.push(utils.getChampion(winners[0],winners[1]));
-        res.send(JSON.stringify(winners));
+        ////IMPORTANTE
+        ////escolhido é sempre o presente no index 0 do array
+        escolhidos.push(utils.getVencedor(escolhidos[0],escolhidos[1]));
+        res.send(JSON.stringify(escolhidos));
     }
 };

@@ -3,6 +3,6 @@ const url = require('url');
 
 module.exports = {
     index(req, res){
-        res.send({express: "Server working fine =D"});
+        res.send({express: "Server belezinha =D"});
     }
 }
