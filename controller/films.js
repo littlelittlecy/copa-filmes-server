@@ -24,13 +24,12 @@ module.exports = {
         itens.sort(utils.dynamicSort("titulo")); //ordenação alfabética
 
         //função que faz a primeira frase, ou seja, as eliminatórias
-        this.eliminatorias(itens, (finalistas) => {
-            const escolhidos = new Array();
-            escolhidos[0] = utils.batalhaEntreFilmes(finalistas[0], finalistas[1]);
-            escolhidos[1] = utils.batalhaEntreFilmes(finalistas[2], finalistas[3]);
-            //o vencedor é sempre o ítem da posição 0 do array
-            res.send(JSON.stringify(utils.getVencedor(escolhidos[0], escolhidos[1])));
-        });
+        let finalistas = this.eliminatorias(itens);
+        const escolhidos = new Array();
+        escolhidos[0] = utils.batalhaEntreFilmes(finalistas[0], finalistas[1]);
+        escolhidos[1] = utils.batalhaEntreFilmes(finalistas[2], finalistas[3]);
+        //o vencedor é sempre o ítem da posição 0 do array
+        res.send(JSON.stringify(utils.getVencedor(escolhidos[0], escolhidos[1])));
 
     },
     eliminatorias(filmes) {
